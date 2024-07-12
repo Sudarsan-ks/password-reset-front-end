@@ -60,7 +60,7 @@ export function Login() {
                         />
                     </Form.Item>
                     <Form.Item>
-                        <a className="login-form-forgot" href="" onClick={() => navigate("/fotgotPassword")} >
+                        <a className="login-form-forgot" href="" onClick={() => navigate("/forgotPassword")} >
                             Forgot password
                         </a>
                     </Form.Item>
