@@ -12,7 +12,6 @@ export function Reset() {
   const handlereset = async (values) => {
     try {
       const res = await axios.post(`${API}/user/resetPassword/${token}`, values)
-      console.log(res)
       message.success("Password Reseted Successfully")
       navigate("/")
     }
