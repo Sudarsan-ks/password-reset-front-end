@@ -7,7 +7,7 @@ import { Button, Form, Input, message } from 'antd';
 
 export function Forgot() {
 
-  const onFinish = async (values) => {
+  const handleForgot = async (values) => {
     try {
       await axios.post(`${API}/user/forgotPassword`, values)
       message.success("Email Sent Sucessfully")
@@ -26,7 +26,7 @@ export function Forgot() {
           initialValues={{
             remember: true,
           }}
-          onFinish={onFinish}
+          onFinish={handleForgot}
         >
           <label type="email"><b>Enter your registered Email ID:</b></label>
           <Form.Item
