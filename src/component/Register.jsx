@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { API } from '../global';
@@ -10,9 +10,10 @@ import { Button, Form, Input, message } from 'antd';
 export function Register() {
 
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
 
   const handleregister = async (values) => {
-    console.log('Received values of form: ', values);
+    setLoading(true)
     try {
       await axios.post(`${API}/user/register`, values)
       message.success("Registered Successfully")
@@ -20,6 +21,9 @@ export function Register() {
     }
     catch (err) {
       message.error("This Email already registered");
+    }
+    finally {
+      setLoading(false)
     }
   };
 
@@ -90,7 +94,7 @@ export function Register() {
             />
           </Form.Item>
           <Form.Item>
-            <Button htmlType="submit" className="register-form-button">
+            <Button htmlType="submit" className="register-form-button" loading={loading} >
               Register
             </Button>
           </Form.Item>
